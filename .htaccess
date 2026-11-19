@@ -1,0 +1,23 @@
+<IfModule mod_rewrite.c>
+Header set Access-Control-Allow-Origin "*"
+RewriteEngine On
+
+# Detect protocol (Render/Cloudflare reverse proxy headers or HTTPS)
+RewriteCond %{HTTP:X-Forwarded-Proto} =https [OR]
+RewriteCond %{HTTPS} on
+RewriteRule ^ - [E=REQ_PROTO:https]
+RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+RewriteCond %{HTTPS} off
+RewriteRule ^ - [E=REQ_PROTO:http]
+
+# Fix directory trailing slash redirects behind reverse proxy without appending internal port (:10000)
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteCond %{REQUEST_URI} !/$
+RewriteCond %{HTTP_HOST} ^([^:]+)
+RewriteRule ^(.*)$ %{ENV:REQ_PROTO}://%1/$1/ [R=301,L]
+
+# Route non-file and non-directory requests to index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?p=$1 [L,QSA]
+</IfModule>

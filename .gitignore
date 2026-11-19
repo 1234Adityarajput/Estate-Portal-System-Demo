@@ -1,0 +1,7 @@
+*.original
+.env
+.DS_Store
+Thumbs.db
+reps/
+Real-Estate-Portal-System-main/
+
