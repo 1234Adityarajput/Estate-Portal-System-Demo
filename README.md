@@ -6,6 +6,29 @@ Production-ready, Dockerized web application built with **PHP 8.2**, **Apache**,
 
 ---
 
+## 🔑 Login ID & Password (Default Credentials)
+
+> [!IMPORTANT]
+> **Production Login Credentials for Web Portals:**
+
+| Portal | URL Path | Login ID / Username | Password | Access Level |
+| :--- | :--- | :--- | :--- | :--- |
+| 🛡️ **Admin Panel** | `/admin/login.php` | `admin` | `admin123` | Full Administrator Rights |
+| 🧑‍💼 **Agent Portal** | `/agent/login.php` | `mcooper@sample.com` | `cooper123` | Real Estate Agent Rights |
+| ⚙️ **Aiven Database** | Cloud Console | `avnadmin` | *(Aiven Console Password)* | MySQL Cloud Superuser |
+
+### Quick Access Summary:
+* **Admin Login URL:** `https://<your-render-url>/admin/login.php`
+  * **User ID / Username:** `admin`
+  * **Password:** `admin123`
+* **Agent Login URL:** `https://<your-render-url>/agent/login.php`
+  * **User ID / Email:** `mcooper@sample.com`
+  * **Password:** `cooper123`
+* **Public Website URL:** `https://<your-render-url>/`
+* **1-Click Database Setup Tool:** `https://<your-render-url>/db_setup.php`
+
+---
+
 ## 🌐 Live URLs & Endpoints
 
 | Portal | Endpoint URL | Description |
